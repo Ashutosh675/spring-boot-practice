@@ -31,21 +31,21 @@ public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-    private String name;
-    private String email;
-    private String mobile;
+   public  Long id;
+    public String name;
+    public String email;
+    public String mobile;
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "address_id", referencedColumnName = "id", nullable = true)
     @JsonIgnoreProperties("user")
-    private Address address;
+    public Address address;
 
     @JsonIgnoreProperties("users")
     @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(name = "user_role", 
         joinColumns = { @JoinColumn(name = "user_id") }, 
         inverseJoinColumns = { @JoinColumn(name = "role_id") })
-    private List<Role> roles = new ArrayList<>();
+    public List<Role> roles = new ArrayList<>();
 
 }
